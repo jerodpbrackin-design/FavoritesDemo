@@ -57,11 +57,31 @@ fun ArticleItem(article: Article, isFavorite: Boolean, onFavoriteClick: () -> Un
             Text(article.title, style = MaterialTheme.typography.titleMedium)
             Text(article.summary, style = MaterialTheme.typography.bodyMedium)
         }
-        IconButton(onClick = onFavoriteClick) {
-            Icon(
-                imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
-                contentDescription = "Favorite"
-            )
+        IconButton(
+            onClick = onFavoriteClick
+        ) {
+
+            Surface(
+                color = MaterialTheme.colorScheme.secondary,
+                shape = MaterialTheme.shapes.small
+            ) {
+
+                Icon(
+                    imageVector =
+                        if (isFavorite) Icons.Filled.Star
+                        else Icons.Outlined.Star,
+
+                    contentDescription = "Favorite",
+
+                    tint =
+                        if (isFavorite)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.outline,
+
+                    modifier = Modifier.padding(4.dp)
+                )
+            }
         }
     }
 }
